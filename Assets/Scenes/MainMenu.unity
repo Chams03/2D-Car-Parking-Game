@@ -207,7 +207,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1380970416}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: NewGameDialog_Yes
+        m_MethodName: NewGameOneDialog_Yes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -906,8 +906,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -731.96, y: 27.690979}
-  m_SizeDelta: {x: 261.39355, y: -1135.3821}
+  m_AnchoredPosition: {x: -730.17, y: 18}
+  m_SizeDelta: {x: 252.149, y: -1357.257}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &842409004
 MonoBehaviour:
@@ -1700,8 +1700,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -799, y: -70}
-  m_SizeDelta: {x: 114.50427, y: -1135.3821}
+  m_AnchoredPosition: {x: -798.99, y: -66}
+  m_SizeDelta: {x: 114.504, y: -1383.672}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1195354395
 MonoBehaviour:
@@ -2320,7 +2320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a423123491be0a44db41633e79edbbb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _newGame: NewGame
+  _newGameModeOne: GameMode_One
+  _newGameModeTwo: GameMode_Two
 --- !u!1 &1439749278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2742,7 +2743,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1380970416}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: NewGameDialog_Yes
+        m_MethodName: NewGameTwoDialog_Yes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2961,8 +2962,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -679.14, y: 130}
-  m_SizeDelta: {x: 354.2325, y: -1135.3821}
+  m_AnchoredPosition: {x: -679.13, y: 102}
+  m_SizeDelta: {x: 354.233, y: -1374.427}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1576969566
 MonoBehaviour:

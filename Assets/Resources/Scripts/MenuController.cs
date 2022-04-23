@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
+    private PlayerScript pScript;
+
     public string _newGameModeOne;
     public string _newGameModeTwo;
 
