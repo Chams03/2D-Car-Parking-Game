@@ -438,7 +438,7 @@ MonoBehaviour:
   height: 15
   randomSeed: 1
   seed: 
-  density: 60
+  density: 19
   player: {fileID: 1154829549}
   roadTile: {fileID: 1689175406708894082, guid: 29c9e463b4d0d86418f0b86566342f11, type: 3}
   wallTile: {fileID: 4144384706319295669, guid: 48a5ddac36e66dc45ab15ec9758ac14a, type: 3}

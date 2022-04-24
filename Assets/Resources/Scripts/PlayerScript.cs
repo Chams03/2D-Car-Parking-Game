@@ -15,7 +15,7 @@ public class PlayerScript : MonoBehaviour
 
     void Awake() {
         boxCollider = GetComponent<BoxCollider2D>();
-        prodGeneration = this.GetComponent<ProdGeneration>();
+        prodGeneration = prod_gen_two.GetComponent<ProdGeneration>();
         pg_gmTwo = prod_gen_two.GetComponent<PG_GMTwo>();
     }
 

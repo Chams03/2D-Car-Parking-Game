@@ -6,20 +6,26 @@ using System;
 public class ProdGeneration : MonoBehaviour
 {
 
+    //Scripts
+    PlayerScript playerScript;
+    SettingsScript settings;
+    FloodFill floodFill;
+    [SerializeField]GameObject pScript;
+
     public int width;
     public int height;
     int entry = 0;
-    public bool randomSeed;
-    public string seed;
+    // public bool randomSeed;
+    // public string seed;
 
-    [Range(0, 100)]
-    public int density;
+    // [Range(0, 100)]
+    // public int density;
 
-    public GameObject player;
-    public GameObject roadTile;
-    public GameObject buildingTile0;
-    public GameObject buildingTile1;
-    public GameObject buildingTile2;
+    // public GameObject player;
+    // public GameObject roadTile;
+    // public GameObject buildingTile0;
+    // public GameObject buildingTile1;
+    // public GameObject buildingTile2;
     
     public int tempx;
     public int tempy;
@@ -27,8 +33,19 @@ public class ProdGeneration : MonoBehaviour
     public int[,] map;
     public GameObject[,] gmap;
 
+    void Awake() {
+        playerScript = pScript.GetComponent<PlayerScript>();
+        settings = GetComponent<SettingsScript>();
+        floodFill = GetComponent<FloodFill>();
+    }
+
     void Start()
     {
+        width = settings.width;
+        height = settings.height;
+        playerScript.gameMode = 0;
+        floodFill.gameMode = 0;
+
         GenerateMap();
     }
 
@@ -40,18 +57,18 @@ public class ProdGeneration : MonoBehaviour
     }
 
     void FillMap() {
-        if(randomSeed) {
-            seed = DateTime.Now.ToString("h:mm:ss");
+        if(settings.randomSeed) {
+            settings.seed = DateTime.Now.ToString("h:mm:ss");
         }
 
-        System.Random rand = new System.Random(seed.GetHashCode());
+        System.Random rand = new System.Random(settings.seed.GetHashCode());
 
         for(int x = 0; x < width; x++) {
             for(int y = 0; y < height; y++) {
                 if (x == 0 || y == 0 || width-1 == x || height-1 == y) {
                     map[x, y] = 0;
                 } else {
-                    map[x, y] = (rand.Next(0,100) < density) ? 1:0;
+                    map[x, y] = (rand.Next(0,100) < settings.density) ? 1:0;
                 }                
             }
         }
@@ -103,11 +120,40 @@ public class ProdGeneration : MonoBehaviour
                 for(int y = 0; y < height; y++) {
                     GameObject spawn;
                     if (map[x, y] == 1) {
-                        spawn = Instantiate(roadTile) as GameObject;
+                        spawn = Instantiate(settings.roadTile) as GameObject;
+                        settings.roadTile.name = "Road";
                     } else if (x != 0 && x != width-1 && y != 0 && y != height-1) {
-                        spawn = Instantiate(buildingTile1) as GameObject;
+                        System.Random rand = new System.Random();
+                        int random = rand.Next(0, 8);
+                        if (random == 0) {
+                            spawn = Instantiate(settings.obstacleTile) as GameObject;
+                        } else if (random == 1) {
+                            spawn = Instantiate(settings.obstacleTile1) as GameObject;
+                        } else if (random == 2) {
+                            spawn = Instantiate(settings.obstacleTile2) as GameObject;
+                        } else if (random == 3) {
+                            spawn = Instantiate(settings.obstacleTile3) as GameObject;
+                        } else if (random == 4) {
+                            spawn = Instantiate(settings.obstacleTile4) as GameObject;
+                        } else if (random == 5) {
+                            spawn = Instantiate(settings.obstacleTile5) as GameObject;
+                        } else if (random == 6) {
+                            spawn = Instantiate(settings.obstacleTile6) as GameObject;
+                        } else if (random == 7) {
+                            spawn = Instantiate(settings.obstacleTile7) as GameObject;
+                        } else {
+                            spawn = Instantiate(settings.obstacleTile8) as GameObject;
+                        }
                     } else {
-                        spawn = Instantiate(buildingTile0) as GameObject;
+                        System.Random rand = new System.Random();
+                        int randomNum = rand.Next(0, 3);
+                        if (randomNum == 0) {
+                            spawn = Instantiate(settings.wallTile) as GameObject;
+                        } else if (randomNum == 1) {
+                            spawn = Instantiate(settings.wallTile1) as GameObject;
+                        } else {
+                            spawn = Instantiate(settings.wallTile2) as GameObject;
+                        }
                     }
 
                     spawn.transform.parent = this.transform;

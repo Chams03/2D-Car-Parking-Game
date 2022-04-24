@@ -52,7 +52,9 @@ public class PG_GMTwo : MonoBehaviour
 
     void FillMap() {
         //check if randomSeed is True.
-        if (settings.randomSeed) settings.seed = DateTime.Now.ToString("h:mm:ss");
+        if (settings.randomSeed) {
+            settings.seed = DateTime.Now.ToString("h:mm:ss");
+        }
 
 
         System.Random rand = new System.Random(settings.seed.GetHashCode());
