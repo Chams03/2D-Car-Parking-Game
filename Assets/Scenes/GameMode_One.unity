@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1930928042}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 10
+    OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -286,6 +286,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 749469740}
+  - component: {fileID: 749469741}
   - component: {fileID: 749469739}
   - component: {fileID: 749469738}
   m_Layer: 0
@@ -308,6 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fillDelay: 0.2
+  gameMode: 0
 --- !u!114 &749469739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,16 +322,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15f3f929652e43d43ba186bdf374e9b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 50
-  height: 25
-  randomSeed: 1
-  seed: 
-  density: 50
-  player: {fileID: 1930928040}
-  roadTile: {fileID: 5585380514693549367, guid: bba168f07bc864844b2a166793ab2907, type: 3}
-  buildingTile0: {fileID: 6796919767398675638, guid: 0baab23d97efc644eb5af66525ad97f6, type: 3}
-  buildingTile1: {fileID: 5370354214587811227, guid: 2859f095e9da19a4187ad37cbe5dbbad, type: 3}
-  buildingTile2: {fileID: 2580162181571364766, guid: d8fa3df575c32414c8ceb24bfbb3b9a4, type: 3}
+  pScript: {fileID: 1930928040}
+  width: 20
+  height: 15
   tempx: 0
   tempy: 0
 --- !u!4 &749469740
@@ -346,6 +341,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &749469741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749469737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a957c14ef3a6494e807e617335669ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 15
+  height: 10
+  randomSeed: 1
+  seed: 
+  density: 69
+  player: {fileID: 1930928040}
+  roadTile: {fileID: 1689175406708894082, guid: 29c9e463b4d0d86418f0b86566342f11, type: 3}
+  wallTile: {fileID: 4144384706319295669, guid: 48a5ddac36e66dc45ab15ec9758ac14a, type: 3}
+  wallTile1: {fileID: 2580162181571364766, guid: d8fa3df575c32414c8ceb24bfbb3b9a4, type: 3}
+  wallTile2: {fileID: 4001132038853033926, guid: b0994952525b5f842b8ab94d60308a31, type: 3}
+  obstacleTile: {fileID: 6342446013044160818, guid: e0b605b4f65615844b555cd2c606a602, type: 3}
+  obstacleTile1: {fileID: 9029832195239205053, guid: e3669a51c26deaf46939fa8d5874e514, type: 3}
+  obstacleTile2: {fileID: 2486966534544718172, guid: 70c01440ab572da49b84a0beadda7a58, type: 3}
+  obstacleTile3: {fileID: 6638878611784925455, guid: e0ce8bd572c8bc340a320b353ed7dae8, type: 3}
+  obstacleTile4: {fileID: 8596512926532123739, guid: f1e2a70a0c314754c89cec8dce079eef, type: 3}
+  obstacleTile5: {fileID: 5758178319454344911, guid: 6d3fdb651e072d140899c8b70bb4558f, type: 3}
+  obstacleTile6: {fileID: 5126649801346804655, guid: af40d46bc52919846a5e07e03914e8a8, type: 3}
+  obstacleTile7: {fileID: 403583327593083632, guid: cb6e7344058c8f14290061f59ae47211, type: 3}
+  obstacleTile8: {fileID: 6073830655552457959, guid: 83c5adacb3062fb4cb4788e968ad2b8e, type: 3}
 --- !u!1 &1434104308
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,7 +426,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -486,6 +512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee96019bdee2b024fbf0c95ee4577bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prod_gen_two: {fileID: 749469737}
+  gameMode: 0
 --- !u!1001 &1963982023
 PrefabInstance:
   m_ObjectHideFlags: 0

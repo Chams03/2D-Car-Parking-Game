@@ -37,23 +37,21 @@ public class FloodFill : MonoBehaviour
     {
         width = settings.width;
         height = settings.height;
+        timeleft = 5f;
 
-        // if (gameMode == 0) {
-        //     tempx = board.tempx;
-        //     tempy = board.tempy;
-        //     map = board.gmap;
+        if (gameMode == 0) {
+            tempx = board.tempx;
+            tempy = board.tempy;
+            map = board.gmap;
 
-        //     if (map[tempx, tempy].GetComponent<SpriteRenderer>().color != Color.white) {
-        //         map[tempx, tempy].GetComponent<SpriteRenderer>().color = Color.white;
-        //     }
-        //     StartCoroutine(Flood(tempx, tempy, Color.white, Color.red));
-        // } else {
+            StartCoroutine(Floodo(tempx, tempy, Color.white));
+        } else {
             tempx = pg_gmTwo.tempx;
             tempy = pg_gmTwo.tempy;
             exitx = pg_gmTwo.exitx;
             exity = pg_gmTwo.exity;
             map = pg_gmTwo.goMap;
-            timeleft = 5f;
+
 
             StartCoroutine(Floodo(tempx, tempy, Color.white));
 
@@ -62,7 +60,7 @@ public class FloodFill : MonoBehaviour
         //     }
         //     // StartCoroutine(Flood(tempx, tempy, Color.white, Color.red));
         //     flodofill(tempx, tempy, Color.white, Color.red);
-        // }
+        }
     }
 
     void flodofill(int x, int y, Color oldColor, Color newColor) {
@@ -97,12 +95,6 @@ public class FloodFill : MonoBehaviour
                 StartCoroutine(Floodo(x, y - 1, newObject));
             } 
         }
-
-        if (gameMode == 0) {
-
-        } else {
-            
-        }
     }
 
     private IEnumerator Flood(int x, int y, Color oldColor, Color newColor) {
@@ -120,18 +112,7 @@ public class FloodFill : MonoBehaviour
                 StartCoroutine(Flood(x, y + 1, oldColor, newColor));
                 StartCoroutine(Flood(x, y - 1, oldColor, newColor));
             } 
-        } //else {
-        //     Debug.Log("RETURNED or END?");
-        //     yield return 0;
-        // }
-        
-        // if (gameMode == 0) {
-        //     //if (count == 500 && x == )
-        // } else {
-        //     if (count == 500 && map[x, y] == map[exitx, exity] && map[x, y].GetComponent<SpriteRenderer>().color == Color.red) {
-        //         Debug.Log("MAP PLAYABLE VALIDATED BY FLOOD FILL");
-        //     }
-        // }
+        }
     }
 
     void Update()
@@ -142,16 +123,28 @@ public class FloodFill : MonoBehaviour
 
         if (timeleft > 0) {
             timeleft -= Time.deltaTime;
-            Debug.Log(timeleft);
         } else {
-            if (mapvalidcount == 1) {
-                if (count > 75  && map[exitx, exity].GetComponent<SpriteRenderer>().name == "Road1") {
-                    Debug.Log("Map Validated. \nMap Playability: Playable");
-                } else {
-                    Debug.Log("Map Validated. \nMap Playability: Not Playable");
+            if (gameMode == 0) {
+                if (mapvalidcount == 1) {
+                    if (count > 75) {
+                        Debug.Log("Map Validated. \nMap Playability: Playable");
+                    } else {
+                        Debug.Log("Map Validated. \nMap Playability: Not Playable");
+                    }
+                    mapvalidcount--;
                 }
-                mapvalidcount--;
+            } else {
+                if (mapvalidcount == 1) {
+                    if (count > 75  && map[exitx, exity].GetComponent<SpriteRenderer>().name == "Road1") {
+                        Debug.Log("Map Validated. \nMap Playability: Playable");
+                    } else {
+                        Debug.Log("Map Validated. \nMap Playability: Not Playable");
+                    }
+                    mapvalidcount--;
+                }
             }
+
+            
         }
     }
 }
