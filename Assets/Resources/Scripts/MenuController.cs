@@ -18,4 +18,9 @@ public class MenuController : MonoBehaviour
     public void NewGameTwoDialog_Yes() {
         SceneManager.LoadScene(_newGameModeTwo);
     }
+
+    public void ExitDialog_Yes(){
+        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
+    }
 }
