@@ -5,7 +5,6 @@ using System;
 
 public class ProdGeneration : MonoBehaviour
 {
-
     //Scripts
     PlayerScript playerScript;
     SettingsScript settings;
@@ -15,18 +14,7 @@ public class ProdGeneration : MonoBehaviour
     public int width;
     public int height;
     int entry = 0;
-    // public bool randomSeed;
-    // public string seed;
 
-    // [Range(0, 100)]
-    // public int density;
-
-    // public GameObject player;
-    // public GameObject roadTile;
-    // public GameObject buildingTile0;
-    // public GameObject buildingTile1;
-    // public GameObject buildingTile2;
-    
     public int tempx;
     public int tempy;
 

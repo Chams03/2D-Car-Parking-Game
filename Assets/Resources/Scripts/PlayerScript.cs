@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    Rigidbody2D rb;
     private BoxCollider2D boxCollider;
     private ProdGeneration prodGeneration;
     private PG_GMTwo pg_gmTwo;
     [SerializeField]GameObject prod_gen_two;
-
+    float accelerationPower = 5f;
+    [SerializeField]
+    float steeringPower = 3f;
+    float steeringAmount, speed, direction;
     public int gameMode;
 
     private Vector3 movement;
@@ -30,20 +34,14 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
+        steeringAmount = -Input.GetAxis("Horizontal");
+        speed = Input.GetAxis("Vertical") * accelerationPower;
+        direction = Mathf.Sign(Vector2.Dot(rb.velocity, rb.GetRelativeVector(Vector2.up)));
+        rb.rotation += steeringAmount * steeringPower * rb.velocity.magnitude * direction;
 
-        movement = new Vector3(x, y, 0);
+        rb.AddRelativeForce(Vector2.up * speed);
 
-        if (movement.y < 0) {
-            // transform.localScale = Vector3.one;
-        } else if (movement.y > 0) {
-            // transform.localScale = new Vector3(1, 1, 1);
-        } else if (movement.x < 0) {
-            
-        }
-
-        transform.Translate(movement * Time.deltaTime);
+        rb.AddRelativeForce(-Vector2.right * rb.velocity.magnitude * steeringAmount / 2);
     }
     
 }
